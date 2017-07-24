@@ -431,9 +431,19 @@ public final class NVActivityIndicatorView: UIView {
 
      - returns: A size indicating the natural size for the receiving view based on its intrinsic properties.
      */
-    public override var intrinsicContentSize: CGSize {
+    /*public override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.width, height: bounds.height)
-    }
+    }*/
+ 
+ 
+    var oldFrame : CGRect = .zero
+       public override func layoutSubviews() {
+           if frame != oldFrame {
+               if isAnimating {
+                   startAnimating()
+               }
+           }
+       }
 
     /**
      Start animating.
